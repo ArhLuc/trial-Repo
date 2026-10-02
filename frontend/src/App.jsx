@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Train,
-  Gauge,
   CloudRain,
   Calendar,
   MapPin,
@@ -24,10 +23,10 @@ const initialForm = {
 };
 
 function getDelayStatus(delay) {
-  if (delay <= 5) return { label: "On Time", color: "text-emerald-300" };
-  if (delay <= 15) return { label: "Minor Delay", color: "text-yellow-300" };
-  if (delay <= 30) return { label: "Moderate Delay", color: "text-orange-300" };
-  return { label: "Major Delay", color: "text-red-300" };
+  if (delay <= 5) return { label: "On time", className: "status-on-time" };
+  if (delay <= 15) return { label: "Minor delay", className: "status-minor" };
+  if (delay <= 30) return { label: "Moderate delay", className: "status-moderate" };
+  return { label: "Major delay", className: "status-major" };
 }
 
 export default function App() {
@@ -72,56 +71,56 @@ export default function App() {
   const status = result ? getDelayStatus(result.predicted_delay) : null;
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-premium text-white">
-     <div className="pointer-events-none absolute inset-0 grid-bg opacity-40" />
-<div className="pointer-events-none absolute left-10 top-20 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl" />
-<div className="pointer-events-none absolute bottom-20 right-10 h-80 w-80 rounded-full bg-amber-400/20 blur-3xl" />
+    <main className="site-shell">
+      <div className="page-container">
+        <nav className="site-nav" aria-label="Main navigation">
+          <a className="brand" href="#top" aria-label="RailMind home">
+            <span className="brand-mark"><Train size={19} strokeWidth={2.2} /></span>
+            <span className="brand-name">railmind</span>
+          </a>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 py-6">
-        <nav className="glass mb-14 flex items-center justify-between rounded-3xl px-6 py-4">
-          <div className="flex items-center gap-3">
-            <div className="rounded-2xl bg-cyan-400/15 p-3 glow">
-              <Train className="text-cyan-300" />
-            </div>
-            <div>
-              <h1 className="text-xl font-black">RailMind AI</h1>
-              <p className="text-xs text-slate-400">Intelligent Railway Prediction</p>
-            </div>
-          </div>
-
-          <div className="hidden rounded-full border border-cyan-300/20 bg-cyan-300/10 px-5 py-2 text-sm text-cyan-200 md:flex items-center gap-2">
-            <Zap size={16} />
-            AI Powered
+          <div className="nav-links">
+            <a href="#how-it-works">How it works</a>
+            <a className="nav-cta" href="#predict">Try prediction <span aria-hidden="true">↗</span></a>
           </div>
         </nav>
 
-        <section className="grid items-center gap-10 lg:grid-cols-2">
+        <section className="hero-section" id="top">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
+            className="hero-copy"
           >
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-300/20 bg-amber-300/10 px-4 py-2 text-sm font-semibold text-amber-200">
-              <Activity size={16} />
-              Smarter Railway Operations
+            <div className="eyebrow">
+              <span className="eyebrow-dot" />
+              A clearer view of what’s ahead
             </div>
 
-            <h2 className="text-5xl font-black leading-tight md:text-7xl">
-              AI Powered
-              <span className="neon-text block bg-gradient-to-r from-cyan-300 via-blue-400 to-violet-400 bg-clip-text text-transparent">
-                Delay Prediction
-              </span>
+            <h2 className="hero-title">
+              Every journey,
+              <span>right on track.</span>
             </h2>
 
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
-              Predict train delays using Machine Learning and railway operating
-              conditions with real-time explainable insights.
+            <p className="hero-description">
+              A little more certainty for the miles ahead. Understand possible
+              train delays with intelligent predictions built around real
+              railway conditions.
             </p>
 
-            <div className="mt-8 grid max-w-xl grid-cols-3 gap-4">
-              <Stat title="ML Model" value="RF" />
-              <Stat title="Inputs" value="7" />
-              <Stat title="Backend" value="Django" />
+            <div className="route-card" id="how-it-works">
+              <div className="route-heading">
+                <span>THE JOURNEY, IN CONTEXT</span>
+                <span className="route-live"><span /> MODEL READY</span>
+              </div>
+              <div className="route-visual" aria-hidden="true">
+                <div className="route-stop"><span className="station-dot" /><span>Origin</span></div>
+                <div className="route-track"><span className="route-train"><Train size={18} /></span></div>
+                <div className="route-stop route-stop-end"><span className="station-dot" /><span>Destination</span></div>
+              </div>
+              <div className="route-caption">
+                <span>Weather</span><i /> <span>Track conditions</span><i /> <span>Station activity</span>
+              </div>
             </div>
           </motion.div>
 
@@ -130,17 +129,19 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7 }}
-            className="glass rounded-[2rem] p-6 md:p-8"
+            id="predict"
+            className="prediction-card"
           >
-            <div className="mb-6 flex items-center justify-between">
-              <div>
-                <h3 className="text-2xl font-black">Prediction Console</h3>
-                <p className="text-sm text-slate-400">Enter operational parameters</p>
+            <div className="form-heading">
+              <div className="form-icon"><Activity size={20} /></div>
+              <div className="form-heading-copy">
+                <p className="form-kicker">YOUR NEXT JOURNEY</p>
+                <h3>Let’s check the line.</h3>
+                <p>Share a few trip details to get started.</p>
               </div>
-              <Gauge className="text-amber-300" />
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="form-fields">
               <Input icon={<Train size={17} />} label="Train Number" name="train_no" type="number" value={form.train_no} onChange={update} />
               <Select icon={<CloudRain size={17} />} label="Weather" name="weather" value={form.weather} onChange={update} options={["Clear", "Cloudy", "Rain", "Fog"]} />
               <Select icon={<Calendar size={17} />} label="Day of Week" name="day_of_week" value={form.day_of_week} onChange={update} options={["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]} />
@@ -152,10 +153,11 @@ export default function App() {
 
             <button
               disabled={loading}
-              className="mt-6 w-full rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500 px-6 py-4 font-black text-white shadow-xl shadow-cyan-500/25 transition hover:scale-[1.015] disabled:opacity-60"
+              className="predict-button"
             >
-              {loading ? "Analyzing Railway Data..." : "Predict Delay"}
+              {loading ? "Checking the line…" : <>See my prediction <span aria-hidden="true">→</span></>}
             </button>
+            <p className="form-footnote"><Zap size={13} /> Thoughtful predictions, powered by railway data.</p>
           </motion.form>
         </section>
 
@@ -163,34 +165,32 @@ export default function App() {
           <motion.section
             initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
-            className="glass mt-10 rounded-[2rem] p-8"
+            className="result-card"
+            aria-live="polite"
           >
-            <div className="grid gap-8 md:grid-cols-3">
-              <div>
-                <p className="text-sm text-slate-400">Predicted Delay</p>
-                <h3 className="mt-2 text-7xl font-black text-cyan-300">
+            <div className="result-grid">
+              <div className="result-delay">
+                <p className="result-label">PREDICTED DELAY</p>
+                <h3>
                   {result.predicted_delay}
-                  <span className="text-2xl text-slate-400"> min</span>
+                  <span> min</span>
                 </h3>
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-black/25 p-5">
-                <p className="text-sm text-slate-400">Delay Status</p>
-                <p className={`mt-2 text-3xl font-black ${status.color}`}>
+              <div className="result-status">
+                <p className="result-label">JOURNEY STATUS</p>
+                <p className={`status-value ${status.className}`}>
                   {status.label}
                 </p>
               </div>
 
-              <div>
-                <p className="mb-3 text-sm text-slate-400">Detected Reasons</p>
-                <div className="space-y-3">
+              <div className="result-reasons">
+                <p className="result-label">WHAT’S INFLUENCING IT</p>
+                <div>
                   {result.reasons?.map((reason) => (
-                    <div
-                      key={reason}
-                      className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3"
-                    >
-                      <AlertTriangle size={17} className="text-amber-300" />
-                      <span className="text-sm">{reason}</span>
+                    <div key={reason} className="reason-item">
+                      <AlertTriangle size={16} />
+                      <span>{reason}</span>
                     </div>
                   ))}
                 </div>
@@ -198,31 +198,27 @@ export default function App() {
             </div>
           </motion.section>
         )}
+
+        <footer className="site-footer">
+          <span><Train size={15} /> Better journeys, one prediction at a time.</span>
+          <span>RAILMIND <i /> BUILT FOR THE RAILWAY</span>
+        </footer>
       </div>
     </main>
-  );
-}
-
-function Stat({ title, value }) {
-  return (
-    <div className="glass rounded-2xl p-4">
-      <p className="text-2xl font-black text-cyan-300">{value}</p>
-      <p className="text-sm text-slate-400">{title}</p>
-    </div>
   );
 }
 
 function Input({ label, icon, ...props }) {
   return (
     <label className="block">
-      <span className="text-sm text-slate-300">{label}</span>
+      <span className="field-label">{label}</span>
 
-      <div className="mt-2 flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/80 px-4 py-3 focus-within:border-cyan-300">
-        <span className="pointer-events-none text-cyan-300">{icon}</span>
+      <div className="field-control">
+        <span className="field-icon">{icon}</span>
 
         <input
           {...props}
-          className="w-full min-w-0 bg-transparent text-white outline-none placeholder:text-slate-500"
+          className="field-input"
         />
       </div>
     </label>
@@ -232,17 +228,17 @@ function Input({ label, icon, ...props }) {
 function Select({ label, icon, options, ...props }) {
   return (
     <label className="block">
-      <span className="text-sm text-slate-300">{label}</span>
+      <span className="field-label">{label}</span>
 
-      <div className="mt-2 flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/80 px-4 py-3 focus-within:border-cyan-300">
-        <span className="pointer-events-none text-cyan-300">{icon}</span>
+      <div className="field-control">
+        <span className="field-icon">{icon}</span>
 
         <select
           {...props}
-          className="w-full min-w-0 appearance-none bg-slate-950 text-white outline-none"
+          className="field-select"
         >
           {options.map((item) => (
-            <option key={item} value={item} className="bg-slate-950 text-white">
+            <option key={item} value={item}>
               {item}
             </option>
           ))}
