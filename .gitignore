@@ -9,3 +9,9 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 anaconda_projects/
+
+# Node / React
+node_modules/
+frontend/node_modules/
+npm-debug.log*
+.DS_Store

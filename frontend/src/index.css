@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  background: #020617;
+  color: white;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.glass {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.04)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(22px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+.neon-text {
+  text-shadow: 0 0 25px rgba(34, 211, 238, 0.7);
+}
+
+.bg-premium {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(34, 211, 238, 0.35), transparent 30%),
+    radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.3), transparent 28%),
+    radial-gradient(circle at 70% 80%, rgba(245, 158, 11, 0.18), transparent 25%),
+    linear-gradient(135deg, #020617, #050816 55%, #0f172a);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 70px 70px;
+}
+
+.glow {
+  box-shadow: 0 0 40px rgba(34, 211, 238, 0.35);
+}
+
+input,
+select {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+input::placeholder {
+  color: #64748b !important;
+}
+
+select option {
+  background-color: #020617 !important;
+  color: white !important;
+}
+
+/* Railway animation */
+.rail-scene {
+  position: relative;
+  margin-top: 32px;
+  height: 210px;
+  overflow: hidden;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(34, 211, 238, 0.28), transparent 35%),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+}
+
+.rail-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.14) 1px, transparent 1px);
+  background-size: 42px 42px;
+  animation: gridMove 7s linear infinite;
+}
+
+.rail-scene::after {
+  content: "";
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  bottom: 34px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #22d3ee, #f59e0b, transparent);
+  box-shadow: 0 0 25px rgba(34, 211, 238, 0.9);
+  animation: railPulse 2s ease-in-out infinite;
+}
+
+.train-visual {
+  position: absolute;
+  left: 8%;
+  bottom: 58px;
+  width: 78%;
+  height: 72px;
+  border-radius: 24px 42px 20px 24px;
+  background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(34,211,238,.12));
+  border: 1px solid rgba(255,255,255,.2);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 0 45px rgba(34, 211, 238, 0.32);
+  animation: trainFloat 3s ease-in-out infinite;
+}
+
+.train-visual::before {
+  content: "";
+  position: absolute;
+  right: -22px;
+  top: 12px;
+  width: 50px;
+  height: 48px;
+  border-radius: 10px 34px 14px 8px;
+  background: linear-gradient(135deg, rgba(34,211,238,.45), rgba(59,130,246,.18));
+  border: 1px solid rgba(255,255,255,.18);
+}
+
+.train-window {
+  position: absolute;
+  top: 18px;
+  width: 52px;
+  height: 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #67e8f9, #2563eb);
+  box-shadow: 0 0 18px rgba(103, 232, 249, 0.7);
+}
+
+.train-window:nth-child(1) { left: 32px; }
+.train-window:nth-child(2) { left: 104px; }
+.train-window:nth-child(3) { left: 176px; }
+.train-window:nth-child(4) { left: 248px; }
+
+.signal-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  right: 32px;
+  top: 30px;
+  border-radius: 999px;
+  background: #fbbf24;
+  box-shadow: 0 0 18px #fbbf24;
+}
+
+.scan-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  background: linear-gradient(90deg, transparent, rgba(34,211,238,.18), transparent);
+  animation: scanMove 3s linear infinite;
+}
+
+.delay-gauge {
+  width: 170px;
+  height: 170px;
+  border-radius: 999px;
+  background:
+    conic-gradient(from 180deg, #22d3ee, #3b82f6, #f59e0b, #ef4444),
+    #020617;
+  padding: 5px;
+  box-shadow: 0 0 45px rgba(34, 211, 238, 0.25);
+}
+
+.delay-gauge-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: radial-gradient(circle, #0f172a, #020617);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 84px 84px; }
+}
+
+@keyframes railPulse {
+  0%, 100% { opacity: .55; transform: scaleX(.9); }
+  50% { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes trainFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes scanMove {
+  from { left: -140px; }
+  to { left: 100%; }
+}
