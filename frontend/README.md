@@ -1,8 +1,14 @@
-# React + Vite
+# AI Based Public Transport Delay Prediction — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The React/Vite app lives in `src/`. The page is in `src/pages`, and requests to
+the Django API are kept in `src/services`.
 
-Currently, two official plugins are available:
+From this directory, install dependencies and start the development server:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```sh
+npm install
+npm run dev
+```
+
+The API defaults to `http://127.0.0.1:8000/api`. Set
+`VITE_API_BASE_URL` in a local `.env` file to use a different API base URL.

@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji";
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: light;
+  background: #f5f5f7;
+  color: #1d1d1f;
+}
+
 html,
 body,
 #root {
@@ -11,125 +24,219 @@ body,
 
 body {
   margin: 0;
-  background: #020617;
-  color: white;
-  font-family: Inter, system-ui, sans-serif;
+  background: #f5f5f7;
+  color: #1d1d1f;
 }
 
 * {
   box-sizing: border-box;
 }
 
+.bg-premium {
+  background:
+    radial-gradient(ellipse at 50% 0%, #fff 0%, transparent 58%),
+    #f5f5f7;
+  color: #1d1d1f;
+}
+
+.bg-premium .text-white {
+  color: #1d1d1f;
+}
+
+.bg-premium .text-slate-300,
+.bg-premium .text-slate-400 {
+  color: #6e6e73;
+}
+
+.bg-premium .text-cyan-200,
+.bg-premium .text-cyan-300,
+.bg-premium .text-blue-300,
+.bg-premium .text-blue-400 {
+  color: #06c;
+}
+
+.bg-premium .text-amber-200,
+.bg-premium .text-amber-300 {
+  color: #bf4800;
+}
+
+.bg-premium .text-emerald-300 {
+  color: #248a3d;
+}
+
+.bg-premium .text-yellow-300 {
+  color: #9a6700;
+}
+
+.bg-premium .text-orange-300 {
+  color: #bf4800;
+}
+
+.bg-premium .text-red-300 {
+  color: #d70015;
+}
+
 .glass {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.12),
-    rgba(255, 255, 255, 0.04)
-  );
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(22px);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.02),
+    0 18px 48px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.bg-premium [class~="bg-black/25"],
+.bg-premium [class~="bg-slate-950/80"],
+.bg-premium .bg-slate-950 {
+  background-color: #f5f5f7;
+}
+
+.bg-premium [class~="bg-white/5"],
+.bg-premium [class~="bg-white/10"] {
+  background-color: rgba(0, 0, 0, 0.035);
+}
+
+.bg-premium [class~="border-white/10"],
+.bg-premium [class~="border-white/5"],
+.bg-premium [class~="border-cyan-300/20"],
+.bg-premium [class~="border-cyan-400/20"],
+.bg-premium [class~="border-amber-300/20"] {
+  border-color: rgba(0, 0, 0, 0.09);
+}
+
+.bg-premium [class~="bg-cyan-300/10"],
+.bg-premium [class~="bg-cyan-400/10"],
+.bg-premium [class~="bg-cyan-400/15"],
+.bg-premium [class~="bg-amber-300/10"] {
+  background-color: rgba(0, 102, 204, 0.08);
+}
+
+.bg-premium [class~="bg-cyan-400/20"],
+.bg-premium [class~="bg-amber-400/20"] {
+  background-color: rgba(0, 102, 204, 0.035);
 }
 
 .neon-text {
-  text-shadow: 0 0 25px rgba(34, 211, 238, 0.7);
-}
-
-.bg-premium {
-  background:
-    radial-gradient(circle at 15% 10%, rgba(34, 211, 238, 0.35), transparent 30%),
-    radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.3), transparent 28%),
-    radial-gradient(circle at 70% 80%, rgba(245, 158, 11, 0.18), transparent 25%),
-    linear-gradient(135deg, #020617, #050816 55%, #0f172a);
-}
-
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 70px 70px;
+  color: #06c;
+  text-shadow: none;
 }
 
 .glow {
-  box-shadow: 0 0 40px rgba(34, 211, 238, 0.35);
+  box-shadow: none;
 }
 
 input,
 select {
   background-color: transparent !important;
-  color: white !important;
+  color: #1d1d1f !important;
 }
 
 input::placeholder {
-  color: #64748b !important;
+  color: #86868b !important;
 }
 
 select option {
-  background-color: #020617 !important;
-  color: white !important;
+  background-color: #fff !important;
+  color: #1d1d1f !important;
 }
 
-/* Railway animation */
+.bg-premium input:focus,
+.bg-premium select:focus {
+  outline: none;
+}
+
+.bg-premium label:focus-within > span:first-child {
+  color: #06c;
+}
+
+.bg-premium form button {
+  border: 0;
+  background: #06c;
+  background-image: none;
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.18);
+  transition:
+    background-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.bg-premium form button:hover:not(:disabled) {
+  background: #0077ed;
+  box-shadow: 0 10px 24px rgba(0, 102, 204, 0.22);
+}
+
+.bg-premium form button:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.bg-premium form button:focus-visible {
+  outline: 3px solid rgba(0, 102, 204, 0.3);
+  outline-offset: 3px;
+}
+
+.bg-premium .h-3 .bg-gradient-to-r {
+  background-image: linear-gradient(90deg, #61aefb, #06c);
+}
+
 .rail-scene {
   position: relative;
   margin-top: 32px;
   height: 210px;
   overflow: hidden;
-  border-radius: 32px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 28px;
   background:
-    radial-gradient(circle at 30% 20%, rgba(34, 211, 238, 0.28), transparent 35%),
-    linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.95));
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+    radial-gradient(ellipse at 75% 15%, rgba(255, 255, 255, 0.95), transparent 45%),
+    linear-gradient(140deg, #dceeff, #f1f7ff 55%, #e8f1fb);
+  box-shadow: 0 12px 32px rgba(31, 78, 121, 0.1);
 }
 
 .rail-scene::before {
-  content: "";
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(34, 211, 238, 0.14) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.14) 1px, transparent 1px);
+    linear-gradient(rgba(0, 102, 204, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 102, 204, 0.045) 1px, transparent 1px);
   background-size: 42px 42px;
-  animation: gridMove 7s linear infinite;
+  content: "";
+  animation: gridMove 12s linear infinite;
 }
 
 .rail-scene::after {
-  content: "";
   position: absolute;
-  left: -20%;
   right: -20%;
   bottom: 34px;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, #22d3ee, #f59e0b, transparent);
-  box-shadow: 0 0 25px rgba(34, 211, 238, 0.9);
-  animation: railPulse 2s ease-in-out infinite;
+  left: -20%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #80bfff, #06c, transparent);
+  content: "";
+  animation: railPulse 3s ease-in-out infinite;
 }
 
 .train-visual {
   position: absolute;
-  left: 8%;
   bottom: 58px;
+  left: 8%;
   width: 78%;
   height: 72px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 24px 42px 20px 24px;
-  background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(34,211,238,.12));
-  border: 1px solid rgba(255,255,255,.2);
-  backdrop-filter: blur(18px);
-  box-shadow: 0 0 45px rgba(34, 211, 238, 0.32);
-  animation: trainFloat 3s ease-in-out infinite;
+  background: linear-gradient(135deg, #fff, #d7eaff);
+  box-shadow: 0 10px 24px rgba(0, 102, 204, 0.16);
+  animation: trainFloat 4s ease-in-out infinite;
 }
 
 .train-visual::before {
-  content: "";
   position: absolute;
-  right: -22px;
   top: 12px;
+  right: -22px;
   width: 50px;
   height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 10px 34px 14px 8px;
-  background: linear-gradient(135deg, rgba(34,211,238,.45), rgba(59,130,246,.18));
-  border: 1px solid rgba(255,255,255,.18);
+  background: linear-gradient(135deg, #b9dcff, #d9eaff);
+  content: "";
 }
 
 .train-window {
@@ -138,8 +245,7 @@ select option {
   width: 52px;
   height: 22px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #67e8f9, #2563eb);
-  box-shadow: 0 0 18px rgba(103, 232, 249, 0.7);
+  background: linear-gradient(135deg, #85c5ff, #4394e5);
 }
 
 .train-window:nth-child(1) { left: 32px; }
@@ -149,13 +255,12 @@ select option {
 
 .signal-dot {
   position: absolute;
+  top: 30px;
+  right: 32px;
   width: 10px;
   height: 10px;
-  right: 32px;
-  top: 30px;
   border-radius: 999px;
-  background: #fbbf24;
-  box-shadow: 0 0 18px #fbbf24;
+  background: #34c759;
 }
 
 .scan-line {
@@ -163,29 +268,36 @@ select option {
   top: 0;
   bottom: 0;
   width: 120px;
-  background: linear-gradient(90deg, transparent, rgba(34,211,238,.18), transparent);
-  animation: scanMove 3s linear infinite;
+  background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.08), transparent);
+  animation: scanMove 5s linear infinite;
 }
 
 .delay-gauge {
   width: 170px;
   height: 170px;
-  border-radius: 999px;
-  background:
-    conic-gradient(from 180deg, #22d3ee, #3b82f6, #f59e0b, #ef4444),
-    #020617;
+  flex: 0 0 auto;
   padding: 5px;
-  box-shadow: 0 0 45px rgba(34, 211, 238, 0.25);
+  border-radius: 999px;
+  background: conic-gradient(from 180deg, #30d158, #007aff, #ff9f0a, #ff3b30);
 }
 
 .delay-gauge-inner {
+  display: flex;
   width: 100%;
   height: 100%;
-  border-radius: 999px;
-  background: radial-gradient(circle, #0f172a, #020617);
-  display: flex;
   align-items: center;
   justify-content: center;
+  border: 5px solid #fff;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.bg-premium .delay-gauge-inner .text-cyan-300 {
+  color: #1d1d1f;
+}
+
+.bg-premium .delay-gauge-inner .text-slate-400 {
+  color: #6e6e73;
 }
 
 @keyframes gridMove {
@@ -194,16 +306,48 @@ select option {
 }
 
 @keyframes railPulse {
-  0%, 100% { opacity: .55; transform: scaleX(.9); }
+  0%, 100% { opacity: 0.55; transform: scaleX(0.9); }
   50% { opacity: 1; transform: scaleX(1); }
 }
 
 @keyframes trainFloat {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-5px); }
 }
 
 @keyframes scanMove {
   from { left: -140px; }
   to { left: 100%; }
+}
+
+@media (max-width: 640px) {
+  .rail-scene {
+    height: 190px;
+    border-radius: 22px;
+  }
+
+  .train-window:nth-child(3),
+  .train-window:nth-child(4) {
+    display: none;
+  }
+
+  .train-window:nth-child(2) {
+    left: 104px;
+  }
+
+  .delay-gauge {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
